@@ -29,7 +29,6 @@ enum NetworkError: Error, LocalizedError {
             return NSLocalizedString("Could not save ToDos, please reinstall the app.", comment: "")
             
             ///
-            ///
         case .badBaseURL:
             return NSLocalizedString("Could not reach proper site.", comment: "")
             

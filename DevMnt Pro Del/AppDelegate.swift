@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let network = NetworkManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+   // https://swiftsenpai.com/swift/async-await-network-requests/
+    
         
         return true
     }

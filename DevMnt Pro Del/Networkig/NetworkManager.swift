@@ -5,14 +5,46 @@
 //  Created by Ivan Ramirez on 9/5/22.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     
     //goal: badBaseURL "https://api.yelp.com/v3/businesses/search"
     let baseURL = URL(string: "https://api.yelp.com/v3")
+    static let shared = NetworkManager()
+    func newFetchBusiness() async throws -> YelpData {
+        
+        guard var url = baseURL else {
+            throw NetworkError.badBaseURL
+        }
+        
+        url.appendPathComponent("businesses")
+        url.appendPathComponent("search")
+        
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        
+        components?.queryItems = [
+            URLQueryItem(name: "term", value: "pizza"),
+            URLQueryItem(name: "location", value: "1550 Digital Dr #400, Lehi, UT 84043"),
+            URLQueryItem(name: "limit", value: "10")
+        ]
+        
+        guard let builtURL = components?.url else {
+            throw NetworkError.badBuiltURL
+        }
+        var request = URLRequest(url: builtURL)
+        
+        request.allHTTPHeaderFields = Constants.headers
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        let yelpData =  try JSONDecoder().decode(YelpData.self, from: data)
+        
+        return yelpData
+        
+    }
     
-    func fetchBusiness(completion: @escaping (Result<YelpData, NetworkError>) -> Void ) {
+    func fetchBusiness(type: String,completion: @escaping (Result<YelpData, NetworkError>) -> Void ) {
         
         guard var url = baseURL else {
             completion(.failure(NetworkError.badBaseURL))
@@ -25,9 +57,9 @@ class NetworkManager {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
         components?.queryItems = [
-        URLQueryItem(name: "term", value: "pizza"),
-        URLQueryItem(name: "location", value: "1550 Digital Dr #400, Lehi, UT 84043"),
-        URLQueryItem(name: "limit", value: "10")
+            URLQueryItem(name: "term", value: type),
+            URLQueryItem(name: "location", value: "1550 Digital Dr #400, Lehi, UT 84043"),
+            URLQueryItem(name: "limit", value: "10")
         ]
         
         guard let builtURL = components?.url else {
@@ -57,7 +89,7 @@ class NetworkManager {
             }
             
             guard let data = data else {
-                print("error: \(error): \(error?.localizedDescription)")
+                print("error: \(String(describing: error)): \(error?.localizedDescription ?? "")")
                 completion(.failure(.invalidData("Invalid Data")))
                 return
             }
@@ -65,7 +97,7 @@ class NetworkManager {
             do {
                 let business = try JSONDecoder().decode(YelpData.self, from: data)
                 completion(.success(business))
-                return 
+                return
             } catch {
                 print("error: \(error): \(error.localizedDescription)")
                 completion(.failure(.invalidData(error.localizedDescription)))
@@ -74,3 +106,4 @@ class NetworkManager {
         }.resume()
     }
 }
+
