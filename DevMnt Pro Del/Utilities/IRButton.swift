@@ -26,7 +26,7 @@ class IRButton: UIButton {
         layer.shadowOpacity = 1.0
         layer.shadowRadius = 9.0
         layer.masksToBounds = true
-        backgroundColor = .systemMint
+        backgroundColor = #colorLiteral(red: 0.9761943221, green: 0.4330539703, blue: 0.3638819456, alpha: 1)
         titleLabel?.font = .boldSystemFont(ofSize: 20)
         layer.cornerRadius = 3
     }
