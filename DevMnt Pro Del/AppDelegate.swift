@@ -13,13 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let network = NetworkManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-   // https://swiftsenpai.com/swift/async-await-network-requests/
     
-        
         return true
     }
 
     // MARK: UISceneSession Lifecycle
+    // https://swiftsenpai.com/swift/async-await-network-requests/
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
