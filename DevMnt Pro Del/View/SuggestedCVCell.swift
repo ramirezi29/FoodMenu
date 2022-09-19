@@ -10,7 +10,7 @@ import UIKit
 class SuggestedCVCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var pizzaImage: UIImageView!
+    @IBOutlet weak var businessImageView: UIImageView!
     @IBOutlet weak var cheeseLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     

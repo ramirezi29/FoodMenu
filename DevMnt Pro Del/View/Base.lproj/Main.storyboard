@@ -287,9 +287,9 @@
                                         <color key="backgroundColor" systemColor="systemMintColor"/>
                                         <size key="customSize" width="158" height="267"/>
                                         <connections>
+                                            <outlet property="businessImageView" destination="adr-dh-79w" id="fvz-Gb-dmk"/>
                                             <outlet property="cheeseLabel" destination="1rd-K5-z8k" id="yY7-wU-xnK"/>
                                             <outlet property="nameLabel" destination="kRL-6d-aFB" id="0jS-BR-KpY"/>
-                                            <outlet property="pizzaImage" destination="adr-dh-79w" id="fvz-Gb-dmk"/>
                                             <outlet property="priceLabel" destination="AA9-v7-yTB" id="qTx-Kl-xf2"/>
                                             <segue destination="srP-OW-0r7" kind="presentation" identifier="toDetailView" id="Bmm-o1-T0X"/>
                                         </connections>

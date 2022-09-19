@@ -43,6 +43,7 @@ class HomeVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         OrderButtonStyle()
         updateLocationLabel()
         orderButton.setTitle("No Orders", for: .normal)
+        //Note: - Alternative to notification center would be the protocol and delegate pattern
         NotificationCenter.default.addObserver(self, selector: #selector(self.addToOrder(notification:)), name: Notification.Name("addToOrder"), object: nil)
     }
     
@@ -123,7 +124,7 @@ class HomeVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         let business = yelpData?.businesses[indexPath.row]
         suggestionCell.updateViews(business: business)
-        suggestionCell.pizzaImage.load(yelp: business?.imageURL ?? "")
+        suggestionCell.businessImageView.load(yelp: business?.imageURL ?? "")
         
         return suggestionCell
     }
