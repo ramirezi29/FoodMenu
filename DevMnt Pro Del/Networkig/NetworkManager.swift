@@ -9,7 +9,6 @@ import UIKit
 
 class NetworkManager {
     
-    //goal: badBaseURL "https://api.yelp.com/v3/businesses/search"
     let baseURL = URL(string: "https://api.yelp.com/v3")
     static let shared = NetworkManager()
     func newFetchBusiness() async throws -> YelpData {

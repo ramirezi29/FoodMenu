@@ -9,18 +9,18 @@ import Foundation
 
 struct Category {
     var title: String
-    var imageTitle: String
+    var imageName: String
 }
 
 struct CategoryOptions {
     static var categories: [Category] = [
-        Category(title: "Tacos", imageTitle: "taco"),
-        Category(title: "Burgers", imageTitle: "burger"),
-        Category(title: "Sushi", imageTitle: "sushi"),
-        Category(title: "pizza", imageTitle: "pizza"),
-        Category(title: "Pho", imageTitle: "pho"),
-        Category(title: "Chicken", imageTitle: "fried-chicken"),
-        Category(title: "Cafe", imageTitle: "coffee"),
-        Category(title: "Boba Tea", imageTitle: "bubble-tea")
+        Category(title: "Tacos", imageName: "taco"),
+        Category(title: "Burgers", imageName: "burger"),
+        Category(title: "Sushi", imageName: "sushi"),
+        Category(title: "pizza", imageName: "pizza"),
+        Category(title: "Pho", imageName: "pho"),
+        Category(title: "Chicken", imageName: "fried-chicken"),
+        Category(title: "Cafe", imageName: "coffee"),
+        Category(title: "Boba Tea", imageName: "bubble-tea")
     ]
 }

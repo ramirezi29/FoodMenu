@@ -22,17 +22,25 @@ extension UIImageView {
     }
 }
 
-extension UIView {
-    
-    func shake() {
+extension UIViewController {
+    func presentAlert(with message : String) {
+        let alertController = UIAlertController(title: "Network Error", message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alertController.addAction(dismissAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+}
 
+extension UIView {
+    func shake() {
         let translateRight = CGAffineTransform(translationX: 4.0, y: 0)
         let translateLeft = CGAffineTransform(translationX: -4.0, y: 0)
-
+        
         self.transform = translateRight
-
+        
         UIView.animate(withDuration: 0.07, delay: 0.01, options: [.autoreverse, .repeat]) {
-
             UIView.modifyAnimations(withRepeatCount: 2, autoreverses: true) {
                 self.transform = translateLeft
             }
@@ -45,11 +53,9 @@ extension UIView {
      An extension on UIView that renders a gradient on a UITableView
      */
     func setGradientToTableView(tableView: UITableView) {
-        
         let gradientBackgroundColors = [
-            #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 1).cgColor,
-            #colorLiteral(red: 0.9806931615, green: 0.9421476722, blue: 0.9527044892, alpha: 1).cgColor,
-            #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+            #colorLiteral(red: 0.8509803922, green: 0.6549019608, blue: 0.7803921569, alpha: 1).cgColor,
+            #colorLiteral(red: 1, green: 0.9882352941, blue: 0.862745098, alpha: 1).cgColor
         ]
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = gradientBackgroundColors
@@ -67,14 +73,11 @@ extension UIView {
      An extension on UIView that renders a gradient on a UIViewControllerØ
      */
     func addVerticalGradientLayer() {
-        
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [
-            #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 1).cgColor,
-            #colorLiteral(red: 0.9806931615, green: 0.9421476722, blue: 0.9527044892, alpha: 1).cgColor,
-            #colorLiteral(red: 0.9721249938, green: 0.8483908772, blue: 0.847076714, alpha: 1).cgColor
-
+            #colorLiteral(red: 0.9333333333, green: 0.6117647059, blue: 0.6549019608, alpha: 1).cgColor,
+            #colorLiteral(red: 1, green: 0.8666666667, blue: 0.8823529412, alpha: 1).cgColor
         ]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
